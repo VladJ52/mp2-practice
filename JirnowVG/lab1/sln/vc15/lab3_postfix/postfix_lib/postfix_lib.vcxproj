@@ -129,6 +129,16 @@
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="list.h" />
+    <ClInclude Include="node.h" />
+    <ClInclude Include="postfix.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="list.cpp" />
+    <ClCompile Include="node.cpp" />
+    <ClCompile Include="postfix.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -14,12 +14,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\Temp\mp2-practice\JirnowVG\lab1\gtest\gtest.h">
+    <ClInclude Include="..\..\..\..\gtest\gtest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\..\Temp\mp2-practice\JirnowVG\lab1\gtest\gtest-all.cc">
+    <ClCompile Include="..\..\..\..\gtest\gtest-all.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

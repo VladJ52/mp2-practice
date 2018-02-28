@@ -130,10 +130,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\Temp\mp2-practice\JirnowVG\lab1\gtest\gtest.h" />
+    <ClInclude Include="..\..\..\..\gtest\gtest.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\..\Temp\mp2-practice\JirnowVG\lab1\gtest\gtest-all.cc" />
+    <ClCompile Include="..\..\..\..\gtest\gtest-all.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
