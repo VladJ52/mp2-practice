@@ -130,7 +130,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="list.h" />
+    <ClInclude Include="..\..\..\..\include\list.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="postfix.h" />
   </ItemGroup>
