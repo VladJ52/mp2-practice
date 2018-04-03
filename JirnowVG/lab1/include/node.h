@@ -1,3 +1,6 @@
+#ifndef __AISD_NODE__
+#define __AISD_NODE__
+
 #pragma once
 #include <iostream>
 #include <string>
@@ -15,6 +18,7 @@ public:
 	node(const valtype &c, const node<valtype> *n);
 	~node() {}
 	const node<valtype>& operator=(const node<valtype> &n);
+	const bool operator==(const node<valtype> &n) const;
 	friend ostream & operator<<(ostream &out, const node<valtype> &n)
 	{
 		out << n.data;
@@ -39,7 +43,7 @@ node<valtype>::node(const valtype &c)
 template<class valtype>
 node<valtype>::node(const valtype &c, const node<valtype> *n)
 {
-	data = d;
+	data = c;
 	next = n;
 };
 
@@ -50,3 +54,14 @@ const node<valtype>& node<valtype>::operator=(const node<valtype> &n)
 	next = n.next;
 	return *this;
 };
+
+template<class valtype>
+inline const bool node<valtype>::operator==(const node<valtype>& n) const
+{
+	if ((data == n.data) && (next == n.next))
+		return true;
+	else
+		return false;
+};
+
+#endif

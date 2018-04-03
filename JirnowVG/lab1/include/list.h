@@ -1,3 +1,6 @@
+#ifndef __AISD_LIST__
+#define __AISD_LIST__
+
 #pragma once
 #include "node.h"
 
@@ -166,3 +169,5 @@ const list<valtype>& list<valtype>::operator=(const list<valtype>& l)
 	tail->next = head;
 	return *this;
 };
+
+#endif
