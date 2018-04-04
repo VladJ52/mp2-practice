@@ -21,10 +21,10 @@ TEST(node, can_create_node_with_const)
 	EXPECT_EQ(a.data, 1);
 }
 
-/*TEST(node, can_create_node_with_full_param)
+TEST(node, can_create_node_with_full_param)
 {
-	const node<int> b(3);
-	node<int> a(2, &b);
+	node<int> b(3);
+	node<int> a(2, b);
 	EXPECT_EQ(a.data, 2);
 	EXPECT_EQ(a.next, b);
-}*/
+}
