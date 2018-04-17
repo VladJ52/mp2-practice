@@ -1,4 +1,5 @@
 #include "postfix.h"
+<<<<<<< HEAD
 #include <gtest.h>
 
 TEST(monom, can_create_with_null_param)
@@ -97,3 +98,6 @@ TEST(polinom, can_create_copied_polinom)
 	ASSERT_NO_THROW(polinom b(a));
 }
 
+=======
+#include <gtest.h>
+>>>>>>> origin/lab-sample

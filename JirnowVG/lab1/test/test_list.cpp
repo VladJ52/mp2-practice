@@ -21,6 +21,7 @@ TEST(node, can_create_with_data)
 	EXPECT_EQ(a.data, 1);
 }
 
+<<<<<<< HEAD
 TEST(node, can_assign)
 {
 	node<int> a;
@@ -112,4 +113,12 @@ TEST_F(TestList, can_assign)
 	EXPECT_EQ(l2.getcurdata(), 1);
 	l2.gotonext();
 	EXPECT_EQ(l2.getcurdata(), 2);
+=======
+TEST(node, can_create_node_with_full_param)
+{
+	node<int> b(3);
+	node<int> a(2, b);
+	EXPECT_EQ(a.data, 2);
+	EXPECT_EQ(a.next, b);
+>>>>>>> origin/lab-sample
 }
