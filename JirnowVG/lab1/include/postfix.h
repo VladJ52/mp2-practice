@@ -7,7 +7,7 @@ class monom
 public:
 	double coeff;
 	unsigned int xyz;
-	monom(const double a=0.0, const unsigned int b=0);
+	monom(const double a = 0.0, const unsigned int b = 0);
 	monom(const monom &m);
 	monom(const string &s);
 	~monom() {}
@@ -33,9 +33,11 @@ public:
 	polinom operator+(polinom &p);
 	polinom operator*(polinom &p);
 	polinom operator*(const double a);
+	//friend polinom operator*(const double d, const polinom &p);
+	bool operator==(polinom &p);
+	bool operator!=(polinom &p);
 	friend ostream & operator<<(ostream &out, const polinom &p);
 };
 
-bool iscorrect(const string &s);
 double rankn(const double a, const int i);
 double convertn(const string &s);

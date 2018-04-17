@@ -16,17 +16,19 @@ public:
 	~list();
 	void gotohead();
 	void gotonext();
-	bool currhead();
+	bool currhead() const;
 	void clean();
-	void insert_to_head(const valtype &d);
+	void del(node<valtype> *n);
 	void insert_to_tail(const valtype &d);
 	void insertup(const valtype &d);
-	valtype& getcurdata();
+	valtype& getcurdata() const;
 	node<valtype>* search(const valtype &d);
 	const list<valtype>& operator=(const list<valtype> &l);
 	friend ostream & operator<<(ostream &out, const list<valtype> &l)
 	{
 		node<valtype>* t = l.head->next;
+		if (t == l.head)
+			out << "0";
 		while (t != l.head)
 		{
 			out << t->data << " ";
@@ -67,19 +69,19 @@ list<valtype>::~list()
 };
 
 template<class valtype>
-void list<valtype>::gotohead()
+void list<valtype>::gotohead() 
 {
 	current = head;
 };
 
 template<class valtype>
-void list<valtype>::gotonext()
+void list<valtype>::gotonext() 
 {
 	current = current->next;
 };
 
 template<class valtype>
-bool list<valtype>::currhead()
+bool list<valtype>::currhead() const
 {
 	return (current == head);
 };
@@ -100,12 +102,13 @@ void list<valtype>::clean()
 };
 
 template<class valtype>
-void list<valtype>::insert_to_head(const valtype & d)
+void list<valtype>::del(node<valtype> *n)
 {
-	node<valtype>* k = new node<valtype>(d);
-	k->next = head->next;
-	head->next = k;
-
+	node<valtype> *k = head;
+	while (k->next != n)
+		k = k->next;
+	k->next = n->next;
+	delete n;
 };
 
 template<class valtype>
@@ -135,7 +138,7 @@ void list<valtype>::insertup(const valtype & d)
 };
 
 template<class valtype>
-valtype & list<valtype>::getcurdata()
+valtype & list<valtype>::getcurdata() const
 {
 	return current->data;
 };
@@ -159,6 +162,7 @@ const list<valtype>& list<valtype>::operator=(const list<valtype>& l)
 	head = new node<valtype>();
 	node<valtype>* k = head;
 	node<valtype>* kk = l.head->next;
+	tail = head;
 	while (kk != l.head)
 	{
 		k->next = new node<valtype>(kk->data);

@@ -139,6 +139,7 @@ polinom::polinom(const string &s)
 				if (min)
 					mon = '-' + mon;
 				monom m(mon);
+				mon = "";
 				node<monom>* k = pol.search(m);
 				if (k == NULL)
 					pol.insertup(m);
@@ -160,7 +161,6 @@ const polinom & polinom::operator=(const polinom & p)
 }
 
 polinom polinom::operator+(polinom & p)
-
 {
 	pol.gotohead();
 	p.pol.gotohead();
@@ -174,20 +174,24 @@ polinom polinom::operator+(polinom & p)
 			pp.pol.insert_to_tail(pol.getcurdata());
 			pol.gotonext();
 		}
-		if (pol.getcurdata() < p.pol.getcurdata())
+		else
 		{
-			pp.pol.insert_to_tail(p.pol.getcurdata());
-			p.pol.gotonext();
-		}
-		if (pol.getcurdata() == p.pol.getcurdata())
-		{
-			monom m(pol.getcurdata().coeff + p.pol.getcurdata().coeff, pol.getcurdata().xyz);
-			pp.pol.insert_to_tail(m);
-			pol.gotonext();
-			p.pol.gotonext();
+			if (pol.getcurdata() < p.pol.getcurdata())
+			{
+				pp.pol.insert_to_tail(p.pol.getcurdata());
+				p.pol.gotonext();
+			}
+			else
+			{
+				monom m(pol.getcurdata().coeff + p.pol.getcurdata().coeff, pol.getcurdata().xyz);
+				if (m.coeff != 0.0)
+					pp.pol.insert_to_tail(m);
+				pol.gotonext();
+				p.pol.gotonext();
+			}
 		}
 	}
-	while (!pol.currhead())
+		while (!pol.currhead())
 	{
 		pp.pol.insert_to_tail(pol.getcurdata());
 		pol.gotonext();
@@ -200,7 +204,7 @@ polinom polinom::operator+(polinom & p)
 	return pp;
 }
 
-polinom polinom::operator*(polinom & p)
+polinom polinom::operator*(polinom& p)
 {
 	pol.gotohead();
 	p.pol.gotohead();
@@ -212,34 +216,82 @@ polinom polinom::operator*(polinom & p)
 		while (!p.pol.currhead())
 		{
 			monom m(pol.getcurdata() * p.pol.getcurdata());
-			node<monom>* k = pp.pol.search(m);
-			if (k == NULL)
-				pp.pol.insertup(m);
-			else
-				k->data.coeff += m.coeff;
+			if (m.coeff != 0.0)
+			{
+				node<monom>* k = pp.pol.search(m);
+				if (k == NULL)
+					pp.pol.insertup(m);
+				else
+				{
+					k->data.coeff += m.coeff;
+					if (k->data.coeff == 0.0)
+						pp.pol.del(k);
+				}
+			}
 			p.pol.gotonext();
 		}
 		pol.gotonext();
+		p.pol.gotohead();
+		p.pol.gotonext();
 	}
 	return pp;
 }
 
-polinom polinom::operator*(const double d)
+polinom polinom::operator*(const double a) 
 {
 	polinom p;
-	pol.gotohead();
-	pol.gotonext();
-	while (!pol.currhead())
+	if (a != 0)
 	{
-		p.pol.insert_to_tail(pol.getcurdata()*d);
+		pol.gotohead();
 		pol.gotonext();
+		while (!pol.currhead())
+		{
+			p.pol.insert_to_tail(pol.getcurdata()*a);
+			pol.gotonext();
+		}
 	}
 	return p;
 }
 
+bool polinom::operator==(polinom &p)
+{
+	if (this != &p)
+	{
+		bool flag = true;
+		pol.gotohead();
+		pol.gotonext();
+		p.pol.gotohead();
+		p.pol.gotonext();
+		while ((flag) && (!pol.currhead()) && (!p.pol.currhead()))
+		{
+			monom a = pol.getcurdata();
+			monom b = p.pol.getcurdata();
+			if (a == b)
+			{
+				if (a.coeff != b.coeff)
+					flag = false;
+			}
+			else
+				flag = false;
+			pol.gotonext();
+			p.pol.gotonext();
+		}
+		if ((!pol.currhead()) || (!p.pol.currhead()))
+			flag = false;
+		return flag;
+	}
+	else
+		return true;
+}
+
+bool polinom::operator!=(polinom &p)
+{
+	return !(*this == p);
+}
+
 ostream & operator<<(ostream & out, const monom & m)
 {
-	out << m.coeff << "x" << m.xyz / 100 << "y" << (m.xyz / 10) % 10 << "z" << m.xyz % 10;
+	out << m.coeff << "*x" << m.xyz / 100 << "*y" << (m.xyz / 10) % 10 << "*z" << m.xyz % 10;
 	return out;
 }
 
@@ -247,14 +299,6 @@ ostream & operator<<(ostream & out, const polinom & p)
 {
 	out << p.pol;
 	return out;
-}
-
-bool iscorrect(const string & s)
-{
-	if (s == "")
-		return false;
-	else
-		return true;
 }
 
 double rankn(const double a, const int i)
