@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-﻿  list.cpp
-  Создание кода...
-  Компиляция...
-  postfix.cpp
-  Создание кода...
-node.obj : warning LNK4221: ▌ЄюЄ Їрщы юс·хъЄр эх юяЁхфхы хЄ ъръшх-ышсю Ёрэхх эхюяЁхфхыхээ√х юЄъЁ√Є√х ёшьтюы√, яю¤Єюьє юэ эх сєфхЄ шёяюы№чютрЄ№ё  эшъръшьш юяхЁрЎш ьш ъюьяюэютъш, юсЁр∙р■∙шьшё  ъ ¤Єющ сшсышюЄхъх
-list.obj : warning LNK4221: ▌ЄюЄ Їрщы юс·хъЄр эх юяЁхфхы хЄ ъръшх-ышсю Ёрэхх эхюяЁхфхыхээ√х юЄъЁ√Є√х ёшьтюы√, яю¤Єюьє юэ эх сєфхЄ шёяюы№чютрЄ№ё  эшъръшьш юяхЁрЎш ьш ъюьяюэютъш, юсЁр∙р■∙шьшё  ъ ¤Єющ сшсышюЄхъх
-  postfix_lib.vcxproj -> C:\mp2-practice\JirnowVG\lab1\sln\vc15\lab3_postfix\Debug\postfix_lib.lib
-=======
 ﻿  postfix.cpp
-  node.cpp
-  list.cpp
-  Generating Code...
 node.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
 list.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
-  postfix_lib.vcxproj -> C:\Temp\Жирнов\mp2-practice\JirnowVG\lab1\sln\vc15\lab3_postfix\Debug\postfix_lib.lib
->>>>>>> origin/lab-sample
+  postfix_lib.vcxproj -> C:\Temp\mp2-practice\JirnowVG\lab1\sln\vc15\lab3_postfix\Debug\postfix_lib.lib

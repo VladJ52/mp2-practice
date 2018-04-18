@@ -35,7 +35,7 @@ monom::monom(const string & s)
 			if (str != "")
 				coeff = j*convertn(str);
 			else
-				coeff = 1;
+				coeff = j;
 		}
 	}
 	for (int k = i - 1; k < len; k++)
@@ -253,19 +253,20 @@ polinom polinom::operator*(const double a)
 	return p;
 }
 
-bool polinom::operator==(polinom &p)
+bool polinom::operator==(const polinom &p) const
 {
 	if (this != &p)
 	{
 		bool flag = true;
-		pol.gotohead();
-		pol.gotonext();
-		p.pol.gotohead();
-		p.pol.gotonext();
-		while ((flag) && (!pol.currhead()) && (!p.pol.currhead()))
+		polinom copypolinom(*this), copyp(p);
+		copypolinom.pol.gotohead();
+		copypolinom.pol.gotonext();
+		copyp.pol.gotohead();
+		copyp.pol.gotonext();
+		while ((flag) && (!copypolinom.pol.currhead()) && (!copyp.pol.currhead()))
 		{
-			monom a = pol.getcurdata();
-			monom b = p.pol.getcurdata();
+			monom a = copypolinom.pol.getcurdata();
+			monom b = copyp.pol.getcurdata();
 			if (a == b)
 			{
 				if (a.coeff != b.coeff)
@@ -273,10 +274,10 @@ bool polinom::operator==(polinom &p)
 			}
 			else
 				flag = false;
-			pol.gotonext();
-			p.pol.gotonext();
+			copypolinom.pol.gotonext();
+			copyp.pol.gotonext();
 		}
-		if ((!pol.currhead()) || (!p.pol.currhead()))
+		if ((!copypolinom.pol.currhead()) || (!copyp.pol.currhead()))
 			flag = false;
 		return flag;
 	}
@@ -284,7 +285,7 @@ bool polinom::operator==(polinom &p)
 		return true;
 }
 
-bool polinom::operator!=(polinom &p)
+bool polinom::operator!=(const polinom &p) const
 {
 	return !(*this == p);
 }

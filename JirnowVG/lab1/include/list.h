@@ -66,6 +66,7 @@ template<class valtype>
 list<valtype>::~list()
 {
 	clean();
+	delete head;
 };
 
 template<class valtype>
@@ -96,9 +97,8 @@ void list<valtype>::clean()
 		delete k;
 		k = kk;
 	}
-	delete head;
-	head = NULL;
-	tail = NULL;
+	head->next=head;
+	tail = head;
 };
 
 template<class valtype>

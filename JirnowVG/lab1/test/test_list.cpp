@@ -21,7 +21,7 @@ TEST(node, can_create_with_data)
 	EXPECT_EQ(a.data, 1);
 }
 
-<<<<<<< HEAD
+
 TEST(node, can_assign)
 {
 	node<int> a;
@@ -74,8 +74,8 @@ protected:
 public:
 	TestList()
 	{
-		l1.insertup(1);  l2.insertup(3);
-		l1.insertup(2);  l2.insertup(4);
+		l1.insertup(1);		   l2.insertup(3);
+		l1.insert_to_tail(2);  l2.insert_to_tail(4);
 	}
 	~TestList()
 	{
@@ -84,17 +84,14 @@ public:
 	}
 };
 
-/*TEST_F(TestList, can_clean)
+TEST_F(TestList, can_clean)
 {
-	l1.clean();
-	l1.gotohead();
-	EXPECT_EQ(l1.getcurdata(), NULL);
-}*/
+	ASSERT_NO_THROW(l1.clean());
+}
 
 TEST_F(TestList, can_delete_element)
 {
-	node<int> a(1);
-	l1.del(&a);
+	l1.del(l1.search(1));
 	l1.gotohead();
 	l1.gotonext();
 	EXPECT_EQ(l1.getcurdata(), 2);
@@ -113,12 +110,4 @@ TEST_F(TestList, can_assign)
 	EXPECT_EQ(l2.getcurdata(), 1);
 	l2.gotonext();
 	EXPECT_EQ(l2.getcurdata(), 2);
-=======
-TEST(node, can_create_node_with_full_param)
-{
-	node<int> b(3);
-	node<int> a(2, b);
-	EXPECT_EQ(a.data, 2);
-	EXPECT_EQ(a.next, b);
->>>>>>> origin/lab-sample
 }

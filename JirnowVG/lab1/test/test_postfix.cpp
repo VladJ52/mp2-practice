@@ -1,5 +1,4 @@
 #include "postfix.h"
-<<<<<<< HEAD
 #include <gtest.h>
 
 TEST(monom, can_create_with_null_param)
@@ -44,20 +43,20 @@ TEST(monom, work_equall)
 TEST(monom, work_not_equall)
 {
 	monom a(3.0, 4);
-	monom b(2.0, 4);
+	monom b(2.0, 5);
 	EXPECT_EQ(a != b, true);
 }
 
 TEST(monom, work_less)
 {
 	monom a(2.0, 4);
-	monom b(3.0, 4);
+	monom b(3.0, 5);
 	EXPECT_EQ(a < b, true);
 }
 
 TEST(monom, work_more)
 {
-	monom a(3.0, 4);
+	monom a(3.0, 5);
 	monom b(2.0, 4);
 	EXPECT_EQ(a > b, true);
 }
@@ -98,6 +97,42 @@ TEST(polinom, can_create_copied_polinom)
 	ASSERT_NO_THROW(polinom b(a));
 }
 
-=======
-#include <gtest.h>
->>>>>>> origin/lab-sample
+TEST(polinom, can_assign)
+{
+	polinom a("x+y");
+	polinom b("z-x");
+	a = b;
+	EXPECT_EQ(a, b);
+}
+
+TEST(polinom, right_addition_1)
+{
+	polinom a("x+y");
+	polinom b("x");
+	polinom c("2x+y");
+	EXPECT_EQ(c, a + b);
+} 
+
+TEST(polinom, right_addition_2)
+{
+	polinom a("-x+y");
+	polinom b("x");
+	polinom c("y");
+	EXPECT_EQ(c, a + b);
+}
+
+TEST(polinom, right_addition_3)
+{
+	polinom a("1+x+y");
+	polinom b("x");
+	polinom c("1+2x+y");
+	EXPECT_EQ(c, a + b);
+}
+
+TEST(polinom, right_addition_4)
+{
+	polinom a("xy");
+	polinom b("xyz-2x2yz");
+	polinom c("xy+xyz-2x2yz");
+	EXPECT_EQ(c, a + b);
+}

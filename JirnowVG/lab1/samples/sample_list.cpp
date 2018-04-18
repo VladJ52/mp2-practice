@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-#include "list.h"
 #include "postfix.h"
 using namespace std;
 
@@ -14,24 +11,15 @@ int main()
 		cout << "2 - multiplication of polinoms" << endl;
 		cout << "3 - multiplication of a polinom on the number" << endl;
 		cin >> f;
+		cin.ignore();
 		if (f == 1)
 		{
 			string s;
 			cout << "Write first polinom" << endl;
 			getline(cin, s);
-			while (!(iscorrect(s)))
-			{
-				cout << "Write again" << endl;
-				getline(cin, s);
-			}
 			polinom p1(s);
 			cout << "Write second polinom" << endl;
 			getline(cin, s);
-			while (!(iscorrect(s)))
-			{
-				cout << "Write again" << endl;
-				getline(cin, s);
-			}
 			polinom p2(s);
 			polinom p3 = p1 + p2;
 			cout << "Addition of polinoms: " << p3 << endl;
@@ -42,19 +30,9 @@ int main()
 				string s;
 				cout << "Write first polinom" << endl;
 				getline(cin, s);
-				while (!(iscorrect(s)))
-				{
-					cout << "Write again" << endl;
-					getline(cin, s);
-				}
 				polinom p1(s);
 				cout << "Write second polinom" << endl;
 				getline(cin, s);
-				while (!(iscorrect(s)))
-				{
-					cout << "Write again" << endl;
-					getline(cin, s);
-				}
 				polinom p2(s);
 				polinom p3 = p1 * p2;
 				cout << "Multiplication of polinoms: " << p3 << endl;
@@ -65,11 +43,6 @@ int main()
 					string s;
 					cout << "Write a polinom" << endl;
 					getline(cin, s);
-					while (!(iscorrect(s)))
-					{
-						cout << "Write again" << endl;
-						getline(cin, s);
-					}
 					polinom p(s);
 					cout << "Write a number" << endl;
 					double d;
