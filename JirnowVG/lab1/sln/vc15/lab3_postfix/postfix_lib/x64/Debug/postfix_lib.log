@@ -1,7 +1,0 @@
-﻿  postfix.cpp
-c:\mp2-practice\jirnowvg\lab1\src\postfix.cpp(1): fatal error C1083: Не удается открыть файл включение: postfix.h: No such file or directory
-  node.cpp
-c:\mp2-practice\jirnowvg\lab1\src\node.cpp(1): fatal error C1083: Не удается открыть файл включение: node.h: No such file or directory
-  list.cpp
-c:\mp2-practice\jirnowvg\lab1\src\list.cpp(1): fatal error C1083: Не удается открыть файл включение: list.h: No such file or directory
-  Создание кода...
