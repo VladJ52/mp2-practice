@@ -12,7 +12,7 @@ public:
 	polinom operator+(const polinom &p) const;
 	polinom operator*(const polinom &p) const;
 	polinom operator*(const double a) const;
-	friend polinom operator*(const double d, const polinom &p) { return (d*p); }
+	friend polinom operator*(const double d, const polinom &p) { return (p*d); }
 	bool operator==(const polinom &p) const;
 	bool operator!=(const polinom &p) const;
 	friend ostream & operator<<(ostream &out, const polinom &p);

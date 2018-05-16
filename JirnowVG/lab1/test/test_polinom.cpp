@@ -145,6 +145,14 @@ TEST(polinom, right_addition_4)
 	EXPECT_EQ(c, a + b);
 }
 
+TEST(polinom, right_addition_5)
+{
+	polinom a("x+y");
+	polinom b("-x-y");
+	polinom c;
+	EXPECT_EQ(c, a + b);
+}
+
 TEST(polinom, right_multiply_on_another_polinom_1)
 {
 	polinom a("x");
@@ -183,4 +191,12 @@ TEST(polinom, right_multiply_on_number_2)
 	double b = -10.0;
 	polinom c("-10x+10y");
 	EXPECT_EQ(c, a * b);
+}
+
+TEST(polinom, right_multiply_on_number_3)
+{
+	polinom a("x-y");
+	double b = -10.0;
+	polinom c("-10x+10y");
+	EXPECT_EQ(c, b * a);
 }
