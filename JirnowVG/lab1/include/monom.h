@@ -5,6 +5,8 @@
 #include "list.h"
 #include "node.h"
 
+using namespace std;
+
 class monom
 {
 public:

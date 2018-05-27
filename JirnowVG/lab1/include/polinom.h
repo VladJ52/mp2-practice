@@ -17,6 +17,3 @@ public:
 	bool operator!=(const polinom &p) const;
 	friend ostream & operator<<(ostream &out, const polinom &p);
 };
-
-double rankn(const double a, const int i);
-double convertn(const string &s);

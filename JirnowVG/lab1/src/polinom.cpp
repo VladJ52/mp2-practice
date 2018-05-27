@@ -33,7 +33,7 @@ monom::monom(const string & s)
 		{
 			flag = false;
 			if (str != "")
-				coeff = j*convertn(str);
+				coeff = j*atof(str.c_str());
 			else
 				coeff = j;
 		}
@@ -306,26 +306,4 @@ ostream & operator<<(ostream & out, const polinom & p)
 {
 	out << p.pol;
 	return out;
-}
-
-double rankn(const double a, const int i)
-{
-	double b = 1;
-	for (int j = 0; j < i; j++)
-		b += a;
-	return b;
-}
-
-double convertn(const string & s)
-{
-	int len = s.length();
-	double a = 0.0;
-	int i = 0;
-	for (i = 0; ((i < len) && (s[i] != '.')); i++)
-		a = a * 10.0 + (s[i] - '0');
-	int j = i;
-	if (s[j] == '.')
-		for (i = j + 1; i < len; i++)
-			a = a + (s[i] - '0') / (rankn(10.0, (i - j)));
-	return a;
 }
