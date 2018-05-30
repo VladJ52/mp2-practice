@@ -11,7 +11,7 @@ class TabRec
 public:
 	string key;
 	val data;
-	TabRec() { key = "null"; val d; data = d; }
+	TabRec() { key = "null"; val d=0; data = d; }
 	TabRec(const string& s, const val& d) { key = s; data = d; }
 	TabRec(const TabRec& t) { key = t.key; data = t.data; }
 	TabRec& operator= (const TabRec<val>& t)

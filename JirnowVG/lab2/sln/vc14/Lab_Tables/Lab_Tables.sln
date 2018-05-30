@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "polinom_lib", "polinom_lib\polinom_lib.vcxproj", "{9BD1C0BA-FA09-43D3-8FEE-A96A6C53B04B}"
 EndProject
@@ -15,10 +15,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sample_table", "sample_tabl
 		{9BD1C0BA-FA09-43D3-8FEE-A96A6C53B04B} = {9BD1C0BA-FA09-43D3-8FEE-A96A6C53B04B}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests\tests.vcxproj", "{E6496E18-FE2F-4231-889A-BAA6A63A17C0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_table", "tests\tests.vcxproj", "{E6496E18-FE2F-4231-889A-BAA6A63A17C0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{24A01B1E-FBFA-4DF7-95DF-11C16A957151} = {24A01B1E-FBFA-4DF7-95DF-11C16A957151}
 		{0C71307E-0C47-43B8-897C-917D81ADE1C9} = {0C71307E-0C47-43B8-897C-917D81ADE1C9}
+		{9BD1C0BA-FA09-43D3-8FEE-A96A6C53B04B} = {9BD1C0BA-FA09-43D3-8FEE-A96A6C53B04B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_polinom", "test_polinom\test_polinom.vcxproj", "{926BA96C-5B0D-4C5A-8EA3-291FB1673178}"
+	ProjectSection(ProjectDependencies) = postProject
+		{24A01B1E-FBFA-4DF7-95DF-11C16A957151} = {24A01B1E-FBFA-4DF7-95DF-11C16A957151}
+		{9BD1C0BA-FA09-43D3-8FEE-A96A6C53B04B} = {9BD1C0BA-FA09-43D3-8FEE-A96A6C53B04B}
 	EndProjectSection
 EndProject
 Global
@@ -69,6 +76,14 @@ Global
 		{E6496E18-FE2F-4231-889A-BAA6A63A17C0}.Release|x64.Build.0 = Release|x64
 		{E6496E18-FE2F-4231-889A-BAA6A63A17C0}.Release|x86.ActiveCfg = Release|Win32
 		{E6496E18-FE2F-4231-889A-BAA6A63A17C0}.Release|x86.Build.0 = Release|Win32
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Debug|x64.ActiveCfg = Debug|x64
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Debug|x64.Build.0 = Debug|x64
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Debug|x86.ActiveCfg = Debug|Win32
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Debug|x86.Build.0 = Debug|Win32
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Release|x64.ActiveCfg = Release|x64
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Release|x64.Build.0 = Release|x64
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Release|x86.ActiveCfg = Release|Win32
+		{926BA96C-5B0D-4C5A-8EA3-291FB1673178}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

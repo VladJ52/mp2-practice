@@ -9,6 +9,7 @@ public:
 	SortTab(int i = 5) : Table(i) {}
 	SortTab(const SortTab<val>& t) : Table(t) {}
 	~SortTab() {}
+	int binsearch(const string &key) const;
 	void insert(const string& tempkey, const val& tempdata) override;
 	val& search(const string& tempkey) const override;
 	void del(const string& key) override;
@@ -16,15 +17,30 @@ public:
 };
 
 template<typename val>
+int SortTab<val>::binsearch(const string& tempkey) const
+{
+	int i = 0, mid;
+	int j = currrec - 1;
+	while (i <= j)
+	{
+		mid = (i + j) / 2;
+		if (tempkey > linerec[mid]->key)
+			i = mid + 1;
+		else
+			j = mid - 1;
+	}
+		return i;
+}
+
+template<typename val>
 void SortTab<val>::insert(const string& tempkey, const val& tempdata)
 {
 	if (IsFull())
 		Realloc();
-	TabRec<val> temprec(tempkey, tempdata);
 	reset();
-	while (!IsTabEnd() && temprec.tempkey >= linerec[currindex]->key)
+	while (!IsTabEnd() && tempkey >= linerec[currindex]->key)
 	{
-		if (linerec[currindex]->key == temprec.tempkey)
+		if (linerec[currindex]->key == tempkey)
 			throw "key already exists";
 		currindex++;
 	}
@@ -35,7 +51,7 @@ void SortTab<val>::insert(const string& tempkey, const val& tempdata)
 	{
 		linerec[i] = linerec[i - 1];
 	}
-	linerec[currindex] = new TabRec<val>(temprec);
+	linerec[currindex] = new TabRec<val>(tempkey, tempdata);
 	reset();
 }
 
@@ -46,18 +62,9 @@ val& SortTab<val>::search(const string& tempkey) const
 	temp.reset();
 	if (currindex > -1)
 	{
-		int i = 0, mid;
-		int j = currrec - 1;
-		while (i <= j)
-		{
-			mid = (i + j) / 2;
-			if (tempkey > linerec[mid]->key)
-				i = mid + 1;
-			else
-				j = mid - 1;
-		}
-		if (temp.linerec[i]->key == tempkey)
-			return temp.linerec[i]->data;
+		int k = binsearch(tempkey);
+		if (temp.linerec[k]->key == tempkey)
+			return temp.linerec[k]->data;
 		else
 			throw "key is not found";
 	}

@@ -1,0 +1,10 @@
+﻿  polinom.cpp
+c:\temp\mp2-practice\jirnowvg\lab2\src\polinom.cpp(27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\mp2-practice\jirnowvg\lab2\src\polinom.cpp(131): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\temp\mp2-practice\jirnowvg\lab2\src\polinom.cpp(321): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  node.cpp
+  list.cpp
+  Generating Code...
+node.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+list.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+  polinom_lib.vcxproj -> C:\Temp\mp2-practice\JirnowVG\lab2\sln\vc14\Lab_Tables\x64\Debug\polinom_lib.lib
