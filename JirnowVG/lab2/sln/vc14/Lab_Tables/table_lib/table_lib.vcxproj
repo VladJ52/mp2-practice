@@ -91,6 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\..\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,6 +152,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\include\hash_table.h" />
+    <ClInclude Include="..\..\..\..\include\sort_table.h" />
+    <ClInclude Include="..\..\..\..\include\table.h" />
+    <ClInclude Include="..\..\..\..\include\scan_table.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\hash_table.cpp" />
+    <ClCompile Include="..\..\..\..\src\scan_table.cpp" />
+    <ClCompile Include="..\..\..\..\src\sort_table.cpp" />
+    <ClCompile Include="..\..\..\..\src\table.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,23 @@
+﻿  test_sort.cpp
+c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\sort_table.h(25): error C2039: tempkey: не является членом "TabRec<val>"
+          with
+          [
+              val=int
+          ]
+  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\table.h(28): note:  см. объявление "TabRec<val>"
+          with
+          [
+              val=int
+          ]
+  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\sort_table.h(20): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\test\test_sort.cpp(6): note: см. ссылку на создание экземпляров класса шаблон при компиляции "SortTab<int>"
+c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\sort_table.h(27): error C2039: tempkey: не является членом "TabRec<val>"
+          with
+          [
+              val=int
+          ]
+  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\table.h(28): note:  см. объявление "TabRec<val>"
+          with
+          [
+              val=int
+          ]
