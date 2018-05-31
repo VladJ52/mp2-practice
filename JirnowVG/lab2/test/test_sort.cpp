@@ -96,6 +96,16 @@ TEST(SortTab, can_del)
 	EXPECT_EQ(t.IsEmpty(), true);
 }
 
+TEST(SortTab, can_del2)
+{
+	SortTab<int> t;
+	t.insert("1", 1);
+	t.insert("2", 2);
+	t.del("1");
+	t.del("2");
+	EXPECT_EQ(t.IsEmpty(), true);
+}
+
 TEST(SortTab, cannot_del_from_empty_table)
 {
 	SortTab<int> t;

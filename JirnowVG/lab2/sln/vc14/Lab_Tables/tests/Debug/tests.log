@@ -1,23 +1,14 @@
-﻿  test_sort.cpp
-c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\sort_table.h(25): error C2039: tempkey: не является членом "TabRec<val>"
-          with
-          [
-              val=int
-          ]
-  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\table.h(28): note:  см. объявление "TabRec<val>"
-          with
-          [
-              val=int
-          ]
-  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\sort_table.h(20): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
-  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\test\test_sort.cpp(6): note: см. ссылку на создание экземпляров класса шаблон при компиляции "SortTab<int>"
-c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\sort_table.h(27): error C2039: tempkey: не является членом "TabRec<val>"
-          with
-          [
-              val=int
-          ]
-  c:\users\владик\desktop\mp2-practice\jirnowvg\lab2\include\table.h(28): note:  см. объявление "TabRec<val>"
-          with
-          [
-              val=int
-          ]
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (tests.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  test_hash.cpp
+c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(39): warning C4018: <: несоответствие типов со знаком и без знака
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(37): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(123): note: см. ссылку на создание экземпляров функции шаблон при компиляции "int HashTab<int>::HashFunc(const std::string &) const"
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(46): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\test\test_hash.cpp(6): note: см. ссылку на создание экземпляров класса шаблон при компиляции "HashTab<int>"
+  Создание кода...
+  Компиляция...
+  test_sort.cpp
+  test_scan.cpp
+  Создание кода...
+  tests.vcxproj -> C:\Users\Владик\Downloads\vladtemp\mp2-practice\JirnowVG\lab2\sln\vc14\Lab_Tables\Debug\test_table.exe
+  tests.vcxproj -> C:\Users\Владик\Downloads\vladtemp\mp2-practice\JirnowVG\lab2\sln\vc14\Lab_Tables\Debug\test_table.pdb (Full PDB)

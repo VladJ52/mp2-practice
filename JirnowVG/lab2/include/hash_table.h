@@ -20,7 +20,7 @@ public:
 	val& getcurr() const override;
 	void reset() override;
 	bool IsTabEnd() const { return currindex == currrec || currindex == -1; }
-	friend ostream& operator<<(ostream& out, const HashTab<val>& t);
+	template <class val> friend ostream& operator<<(ostream& out, const HashTab<val>& t);
 };
 
 
@@ -102,7 +102,7 @@ val& HashTab<val>::search(const string& tempkey) const
 			return temp.linerec[temp.currindex]->data;
 		else
 		{
-			while (temp.flag[temp.currindex] && ((temp.currindex + 1) != ind) && (temp.linerec[temp.currindex]->key == tempkey))
+			while (temp.flag[temp.currindex] && ((temp.currindex + 1) != ind) && (temp.linerec[temp.currindex]->key != tempkey))
 				temp.currindex = (temp.currindex + 1) % temp.maxrec;
 			if (temp.linerec[temp.currindex]->key == tempkey)
 				return temp.linerec[temp.currindex]->data;
@@ -118,27 +118,35 @@ template<typename val>
 void HashTab<val>::insert(const string& tempkey, const val& tempdata)
 {
 	if (IsFull())
-		Realloc();
-	reset();
-	currindex = HashFunc(tempkey);
-	if (!flag[currindex])
 	{
+		Realloc();
+		currindex = HashFunc(tempkey);
 		linerec[currindex] = new TabRec<val>(tempkey, tempdata);
 		currrec++;
 		flag[currindex] = 1;
 	}
 	else
-		if (linerec[currindex]->key != tempkey)
+	{
+		currindex = HashFunc(tempkey);
+		if (!flag[currindex])
 		{
-			int ind = currindex;
-			while (flag[currindex] && ((currindex + 1) != ind))
-				currindex = (currindex + 1) % maxrec;
 			linerec[currindex] = new TabRec<val>(tempkey, tempdata);
 			currrec++;
 			flag[currindex] = 1;
 		}
 		else
-			throw "key already exists";
+			if (linerec[currindex]->key != tempkey)
+			{
+				int ind = currindex;
+				while (flag[currindex] && ((currindex + 1) != ind))
+					currindex = (currindex + 1) % maxrec;
+				linerec[currindex] = new TabRec<val>(tempkey, tempdata);
+				currrec++;
+				flag[currindex] = 1;
+			}
+			else
+				throw "key already exists";
+	}
 }
 
 template<typename val>
@@ -149,19 +157,33 @@ void HashTab<val>::del(const string& key)
 	{
 		currindex = HashFunc(key);
 		int ind = currindex;
-		if (linerec[currindex]->key != key)
+		if (flag[currindex])
 		{
-			while (flag[currindex] && ((currindex + 1) != ind) && (linerec[currindex]->key == key))
-				currindex = (currindex + 1) % maxrec;
 			if (linerec[currindex]->key != key)
-				throw "key is not found";
+			{
+				while (flag[currindex] && ((currindex + 1) != ind) && (linerec[currindex]->key == key))
+					currindex = (currindex + 1) % maxrec;
+				if (!flag[currindex] || linerec[currindex]->key != key)
+					throw "key is not found";
+				else
+				{
+					linerec[ind] = new TabRec<val>;
+					flag[ind] = 0;
+					currrec--;
+				}
+			}
+			else
+			{
+				linerec[currindex] = new TabRec<val>;
+				flag[currindex] = 0;
+				currrec--;
+			}
 		}
+		else
+			throw "key is not found";
 	}
 	else
 		throw "table is empty";
-	linerec[currindex] = new TabRec<val>;
-	flag[currindex] = 0;
-	currrec--;
 }
 
 template<typename val>
@@ -186,8 +208,8 @@ void HashTab<val>::set()
 		throw "table is empty";
 }
 
-template <typename type>
-ostream& operator<< (ostream& os, const HashTab<type>& t)
+template <typename val>
+ostream& operator<< (ostream& os, const HashTab<val>& t)
 {
 	if (t.currrec)
 	{

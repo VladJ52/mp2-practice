@@ -44,6 +44,8 @@ public:
 	virtual void set();
 	virtual val& getcurr() const;
 	virtual int getcurrind() { return currindex; }
+	virtual int getcurrrec() { return currrec; }
+	template <class val> friend ostream& operator<< (ostream& os, const Table<val>& t);
 };
 
 template<typename val>
@@ -109,8 +111,8 @@ void Table<val>::set()
 		reset();
 }
 
-template <typename valtype>
-ostream& operator<< (ostream& os, const Table<valtype>& t)
+template <typename val>
+ostream& operator<< (ostream& os, const Table<val>& t)
 {
 	if (t.currrec)
 		for (int i = 0; i < t.currrec; i++)

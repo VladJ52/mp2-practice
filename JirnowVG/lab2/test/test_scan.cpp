@@ -88,11 +88,21 @@ TEST(ScanTab, can_search)
 }
 
 
-TEST(ScanTab, can_del)
+TEST(ScanTab, can_del1)
 {
 	ScanTab<int> t;
 	t.insert("1", 1);
 	t.del("1");
+	EXPECT_EQ(t.IsEmpty(), true);
+}
+
+TEST(ScanTab, can_del2)
+{
+	ScanTab<int> t;
+	t.insert("1", 1);
+	t.insert("2", 2);
+	t.del("1");
+	t.del("2");
 	EXPECT_EQ(t.IsEmpty(), true);
 }
 
