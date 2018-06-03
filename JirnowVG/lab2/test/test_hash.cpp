@@ -1,4 +1,5 @@
 #include "hash_table.h"
+#include "polinom.h"
 #include <gtest.h>
 
 TEST(HashTab, can_create_empty)

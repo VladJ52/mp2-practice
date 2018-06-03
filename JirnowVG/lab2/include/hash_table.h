@@ -10,12 +10,12 @@ protected:
 	int HashFunc(const string& key) const;
 	void Realloc() override;
 public:
-	HashTab(int i = 5);
+	HashTab(int i = 10);
 	HashTab(const HashTab<val>& t);
 	~HashTab() { delete[] flag; }
 	void insert(const string& tempkey, const val& tempdata) override;
-	val& search(const string& tepmkey) const;
-	void del(const string& k);
+	val& search(const string& tepmkey) const override;
+	void del(const string& k) override;
 	void set() override;
 	val& getcurr() const override;
 	void reset() override;
@@ -118,23 +118,15 @@ template<typename val>
 void HashTab<val>::insert(const string& tempkey, const val& tempdata)
 {
 	if (IsFull())
-	{
 		Realloc();
-		currindex = HashFunc(tempkey);
-		linerec[currindex] = new TabRec<val>(tempkey, tempdata);
-		currrec++;
-		flag[currindex] = 1;
-	}
-	else
-	{
-		currindex = HashFunc(tempkey);
-		if (!flag[currindex])
+	currindex = HashFunc(tempkey);
+	if (!flag[currindex])
 		{
 			linerec[currindex] = new TabRec<val>(tempkey, tempdata);
 			currrec++;
 			flag[currindex] = 1;
 		}
-		else
+	else
 			if (linerec[currindex]->key != tempkey)
 			{
 				int ind = currindex;
@@ -146,7 +138,6 @@ void HashTab<val>::insert(const string& tempkey, const val& tempdata)
 			}
 			else
 				throw "key already exists";
-	}
 }
 
 template<typename val>
@@ -161,14 +152,14 @@ void HashTab<val>::del(const string& key)
 		{
 			if (linerec[currindex]->key != key)
 			{
-				while (flag[currindex] && ((currindex + 1) != ind) && (linerec[currindex]->key == key))
+				while (flag[currindex] && ((currindex + 1) != ind) && (linerec[currindex]->key != key))
 					currindex = (currindex + 1) % maxrec;
 				if (!flag[currindex] || linerec[currindex]->key != key)
 					throw "key is not found";
 				else
 				{
-					linerec[ind] = new TabRec<val>;
-					flag[ind] = 0;
+					linerec[currindex] = new TabRec<val>;
+					flag[currindex] = 0;
 					currrec--;
 				}
 			}

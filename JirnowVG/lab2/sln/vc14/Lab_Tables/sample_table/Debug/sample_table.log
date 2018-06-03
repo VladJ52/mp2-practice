@@ -1,3 +1,8 @@
 ﻿  sample.cpp
+c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(39): warning C4018: <: несоответствие типов со знаком и без знака
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(37): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(122): note: см. ссылку на создание экземпляров функции шаблон при компиляции "int HashTab<polinom>::HashFunc(const std::string &) const"
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\include\hash_table.h(46): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\sample\sample.cpp(13): note: см. ссылку на создание экземпляров класса шаблон при компиляции "HashTab<polinom>"
   sample_table.vcxproj -> C:\Users\Владик\Downloads\vladtemp\mp2-practice\JirnowVG\lab2\sln\vc14\Lab_Tables\Debug\sample_table.exe
   sample_table.vcxproj -> C:\Users\Владик\Downloads\vladtemp\mp2-practice\JirnowVG\lab2\sln\vc14\Lab_Tables\Debug\sample_table.pdb (Full PDB)

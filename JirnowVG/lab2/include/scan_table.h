@@ -6,7 +6,7 @@ template<typename val>
 class ScanTab : public Table<val>
 {
 public:
-	ScanTab(int i = 5) : Table(i) {}
+	ScanTab(int i = 10) : Table(i) {}
 	ScanTab(const ScanTab<val>& t) : Table(t) {}
 	~ScanTab() {}
 	void insert(const string& tempkey, const val& tempdata) override;
@@ -25,7 +25,7 @@ void ScanTab<val>::insert(const string& tempkey, const val& tempdata)
 	{
 		while ((currindex < currrec) && (linerec[currindex]->key != tempkey))
 			currindex++;
-		if (IsTabEnd())
+		if (currindex==currrec)
 		{
 			linerec[currindex] = new TabRec<val>(tempkey,tempdata);
 			currrec++;
@@ -48,9 +48,9 @@ val& ScanTab<val>::search(const string& tempkey) const
 	k.reset();
 	if (k.currindex > -1)
 	{
-		while ((k.currindex > -1) && (k.linerec[k.currindex]->key != tempkey) && (k.currindex < k.currrec))
+		while ((k.linerec[k.currindex]->key != tempkey) && (k.currindex < k.currrec))
 			k.set();
-		if (k.currindex < k.currrec)
+		if ((k.currindex < k.currrec) && (k.linerec[k.currindex]->key == tempkey))
 			return k.linerec[k.currindex]->data;
 		else
 			throw "key is not found";
@@ -63,11 +63,20 @@ template<typename val>
 void ScanTab<val>::del(const string& key)
 {
 	reset();
-	if (IsEmpty())
-		throw "table is empty";
-	search(key);
-	if (currrec > 1)
-		linerec[currindex] = linerec[--currrec];
+	if (currindex > -1)
+	{
+		while ((currindex < currrec) && (linerec[currindex]->key != key))
+			currindex++;
+		if (currrec && (currindex < currrec))
+		{
+			if (currrec > 1)
+				linerec[currindex] = linerec[--currrec];
+			else
+				currrec = 0;
+		}
+		else
+			throw "key is not found";
+	}
 	else
-		currrec = 0;
+		throw "table is empty";
 }

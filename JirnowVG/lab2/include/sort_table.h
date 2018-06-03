@@ -5,15 +5,15 @@
 template<typename val>
 class SortTab : public Table<val>
 {
+protected:
+	int binsearch(const string &key) const;
 public:
-	SortTab(int i = 5) : Table(i) {}
+	SortTab(int i = 10) : Table(i) {}
 	SortTab(const SortTab<val>& t) : Table(t) {}
 	~SortTab() {}
-	int binsearch(const string &key) const;
 	void insert(const string& tempkey, const val& tempdata) override;
 	val& search(const string& tempkey) const override;
 	void del(const string& key) override;
-	//friend ostream& operator<<(ostream& out, const SortTab<val>& t);
 };
 
 template<typename val>
@@ -38,21 +38,33 @@ void SortTab<val>::insert(const string& tempkey, const val& tempdata)
 	if (IsFull())
 		Realloc();
 	reset();
-	while (!IsTabEnd() && tempkey >= linerec[currindex]->key)
+	if (currrec)
 	{
-		if (linerec[currindex]->key == tempkey)
-			throw "key already exists";
-		currindex++;
+		int k = binsearch(tempkey);
+		if (k != currrec)
+		{
+			if (linerec[k]->key != tempkey)
+			{
+				for (int i = currrec; i > k; i--)
+					linerec[i] = linerec[i - 1];
+				linerec[k] = new TabRec<val>(tempkey, tempdata);
+				currrec++;
+			}
+			else
+				throw "key already exists";
+		}
+		else
+		{
+			linerec[k] = new TabRec<val>(tempkey, tempdata);
+			currrec++;
+		}
 	}
-	if (IsEmpty())
-		currindex++;
-	currrec++;
-	for (int i = currrec - 1; i > currindex; i--)
+	else
 	{
-		linerec[i] = linerec[i - 1];
+		currindex++;
+		linerec[currindex] = new TabRec<val>(tempkey, tempdata);
+		currrec++;
 	}
-	linerec[currindex] = new TabRec<val>(tempkey, tempdata);
-	reset();
 }
 
 template<typename val>
@@ -76,16 +88,18 @@ template<typename val>
 void SortTab<val>::del(const string& key)
 {
 	reset();
-	if (IsEmpty())
-		throw "table is empty";
-	search(key);
-	if (currrec > 1)
+	if (currrec)
 	{
-		currrec--;
-		for (int i = currindex; i < currrec; i++)
-			linerec[i] = linerec[i + 1];
-		reset();
+		int k = binsearch(key);
+		if ((k < currrec) && (linerec[k]->key == key))
+		{
+			for (int i = k; i < currrec; i++)
+				linerec[i] = linerec[i + 1];
+			currrec--;
+		}
+		else
+			throw "key is not found";
 	}
 	else
-		currrec = 0;
+		throw "table is empty";
 }

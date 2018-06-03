@@ -11,7 +11,7 @@ class TabRec
 public:
 	string key;
 	val data;
-	TabRec() { key = "null"; val d=0; data = d; }
+	TabRec() { key = "null"; }
 	TabRec(const string& s, const val& d) { key = s; data = d; }
 	TabRec(const TabRec& t) { key = t.key; data = t.data; }
 	TabRec& operator= (const TabRec<val>& t)
@@ -31,14 +31,14 @@ protected:
 	int currindex;
 	virtual void Realloc();
 public:
-	Table(int i = 5);
+	Table(int i = 10);
 	Table(const Table<val>& t);
-	virtual ~Table() { delete[] linerec; };
+	virtual ~Table() { delete[] linerec; }
 	virtual void insert(const string& tempkey, const val& tempdata) = 0;
 	virtual void del(const string &k) = 0;
 	virtual val& search(const string& tempkey) const = 0;
 	virtual void reset();
-	virtual bool IsTabEnd() const { return currindex == currrec || currindex == -1; }
+	virtual bool IsTabEnd() const { return ((currindex+1) == currrec) || currindex == -1; }
 	bool IsFull() const { return currrec == maxrec; }
 	bool IsEmpty() const { return currrec == 0; }
 	virtual void set();
@@ -63,7 +63,7 @@ Table<val>::Table(const Table<val>& t)
 	currrec = t.currrec;
 	maxrec = t.maxrec;
 	currindex = t.currindex;
-	delete[] linerec;
+	delete [] linerec;
 	linerec = new TabRec<val>*[maxrec];
 	for (int i = 0; i < currrec; i++)
 		linerec[i] = t.linerec[i];
@@ -85,7 +85,7 @@ void Table<val>::Realloc()
 template<typename val>
 void Table<val>::reset()
 {
-	if (currrec > 0)
+	if (currrec)
 		currindex = 0;
 	else
 		currindex = -1;
@@ -107,7 +107,7 @@ void Table<val>::set()
 		currindex++;
 	else
 		throw "table is empty";
-	if (IsTabEnd())
+	if (currindex==currrec)
 		reset();
 }
 
