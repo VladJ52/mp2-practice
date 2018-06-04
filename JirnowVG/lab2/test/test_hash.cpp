@@ -4,7 +4,7 @@
 
 TEST(HashTab, can_create_empty)
 {
-	ASSERT_NO_THROW(HashTab<int> t);
+	ASSERT_NO_THROW(HashTab<int> t(2));
 }
 
 TEST(HashTab, can_copied_from_empty)
@@ -27,12 +27,14 @@ TEST(HashTab, can_copied_from_not_empty)
 TEST(HashTab, can_realloc_memory_when_is_necessary)
 {
 	HashTab<int> t;
+	t.insert("2", 232);
+	t.insert("3", 22);
 	ASSERT_NO_THROW(t.insert("1", 2));
 }
 
 TEST(HashTab, can_reset1)
 {
-	HashTab<int> t;
+	HashTab<int> t(2);
 	t.insert("1", 1);
 	t.insert("2", 1);
 	t.reset();

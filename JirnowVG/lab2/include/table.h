@@ -11,14 +11,16 @@ class TabRec
 public:
 	string key;
 	val data;
-	TabRec() { key = "null"; }
+	TabRec() { key = "null"; data = val(); }
 	TabRec(const string& s, const val& d) { key = s; data = d; }
 	TabRec(const TabRec& t) { key = t.key; data = t.data; }
 	TabRec& operator= (const TabRec<val>& t)
 	{
 		data = t.data;
 		key = t.key;
+		return *this;
 	}
+	~TabRec() {}
 };
 
 template <typename val>
@@ -75,10 +77,11 @@ Table<val>::Table(const Table<val>& t)
 template <typename val>
 void Table<val>::Realloc()
 {
-	int newmax = maxrec * 2;
+	int cof = 2;
+	int newmax = maxrec * cof;
 	TabRec<val>** k = new TabRec<val>*[newmax];
 	reset();
-	for (int i = 0; i < maxrec; i++)
+	for (int i = 0; i < currrec; i++)
 		k[i] = linerec[i];
 	delete[] linerec;
 	maxrec = newmax;

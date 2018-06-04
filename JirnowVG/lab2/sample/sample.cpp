@@ -66,6 +66,7 @@ void main()
 				getline(cin, key);
 			try
 			{
+				Tab1.search(key);
 				cout << "ScanTable: " << endl << Tab1 << endl;
 				cout << "-------------------------" << endl;
 				cout << "Search in ScanTable: " << Tab1.search(key) << endl;

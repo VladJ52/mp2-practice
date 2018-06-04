@@ -3,12 +3,12 @@
 
 TEST(ScanTab, can_create_empty)
 {
-	ASSERT_NO_THROW(ScanTab<int> t);
+	ASSERT_NO_THROW(ScanTab<int> t(2));
 }
 
 TEST(ScanTab, can_copied_from_empty)
 {
-	ScanTab<int> t;
+	ScanTab<int> t(2);
 	ASSERT_NO_THROW(ScanTab<int> tt(t));
 }
 

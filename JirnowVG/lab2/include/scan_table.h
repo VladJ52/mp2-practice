@@ -47,8 +47,8 @@ val& ScanTab<val>::search(const string& tempkey)
 	reset();
 	if (currindex > -1)
 	{
-		while ((linerec[currindex]->key != tempkey) && (currindex <= currrec))
-			set();
+		while ((linerec[currindex]->key != tempkey) && (currindex < currrec))
+			currindex++;
 		if (currindex < currrec)
 			return linerec[currindex]->data;
 		else
