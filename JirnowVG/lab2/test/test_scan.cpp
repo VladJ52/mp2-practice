@@ -87,12 +87,14 @@ TEST(ScanTab, can_search)
 	EXPECT_EQ(t.search("1"), 1);
 }
 
-//TEST(ScanTab, can_search2)
-//{
-//	ScanTab<int> t;
-//t.insert("2", 1);
-//	ASSERT_ANY_THROW(t.search("1"));
-//}
+/*TEST(ScanTab, can_search2)
+{
+	ScanTab<int> t(10);
+	t.insert("2", 1);
+	t.insert("3", 2);
+	t.reset();
+	ASSERT_ANY_THROW(t.search("1"));
+}*/
 
 TEST(ScanTab, can_del1)
 {

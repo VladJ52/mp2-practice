@@ -33,10 +33,13 @@ protected:
 public:
 	Table(int i = 10);
 	Table(const Table<val>& t);
-	virtual ~Table() { delete[] linerec; }
+	virtual ~Table() 
+	{
+		delete[] linerec;
+	}
 	virtual void insert(const string& tempkey, const val& tempdata) = 0;
 	virtual void del(const string &k) = 0;
-	virtual val& search(const string& tempkey) const = 0;
+	virtual val& search(const string& tempkey) = 0;
 	virtual void reset();
 	virtual bool IsTabEnd() const { return ((currindex+1) == currrec) || currindex == -1; }
 	bool IsFull() const { return currrec == maxrec; }
@@ -63,7 +66,7 @@ Table<val>::Table(const Table<val>& t)
 	currrec = t.currrec;
 	maxrec = t.maxrec;
 	currindex = t.currindex;
-	delete [] linerec;
+	delete[] linerec;
 	linerec = new TabRec<val>*[maxrec];
 	for (int i = 0; i < currrec; i++)
 		linerec[i] = t.linerec[i];

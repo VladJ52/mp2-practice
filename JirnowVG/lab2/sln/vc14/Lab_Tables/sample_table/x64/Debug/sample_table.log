@@ -1,2 +1,2 @@
 ﻿  sample.cpp
-LINK : fatal error LNK1104: cannot open file 'table_lib.lib'
+  sample_table.vcxproj -> C:\Temp\mp2-practice\JirnowVG\lab2\sln\vc14\Lab_Tables\x64\Debug\sample_table.exe

@@ -12,7 +12,7 @@ public:
 	SortTab(const SortTab<val>& t) : Table(t) {}
 	~SortTab() {}
 	void insert(const string& tempkey, const val& tempdata) override;
-	val& search(const string& tempkey) const override;
+	val& search(const string& tempkey) override;
 	void del(const string& key) override;
 };
 
@@ -68,15 +68,14 @@ void SortTab<val>::insert(const string& tempkey, const val& tempdata)
 }
 
 template<typename val>
-val& SortTab<val>::search(const string& tempkey) const
+val& SortTab<val>::search(const string& tempkey)
 {
-	SortTab<val> temp(*this);
-	temp.reset();
+	reset();
 	if (currindex > -1)
 	{
 		int k = binsearch(tempkey);
-		if (temp.linerec[k]->key == tempkey)
-			return temp.linerec[k]->data;
+		if (linerec[k]->key == tempkey)
+			return linerec[k]->data;
 		else
 			throw "key is not found";
 	}

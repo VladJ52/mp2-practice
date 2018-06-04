@@ -10,7 +10,7 @@ public:
 	ScanTab(const ScanTab<val>& t) : Table(t) {}
 	~ScanTab() {}
 	void insert(const string& tempkey, const val& tempdata) override;
-	val& search(const string& key) const override;
+	val& search(const string& key) override;
 	void del(const string& key) override;
 };
 
@@ -42,16 +42,15 @@ void ScanTab<val>::insert(const string& tempkey, const val& tempdata)
 }
 
 template<typename val>
-val& ScanTab<val>::search(const string& tempkey) const
+val& ScanTab<val>::search(const string& tempkey)
 {
-	ScanTab<val> k(*this);
-	k.reset();
-	if (k.currindex > -1)
+	reset();
+	if (currindex > -1)
 	{
-		while ((k.linerec[k.currindex]->key != tempkey) && (k.currindex < k.currrec))
-			k.set();
-		if ((k.currindex < k.currrec) && (k.linerec[k.currindex]->key == tempkey))
-			return k.linerec[k.currindex]->data;
+		while ((linerec[currindex]->key != tempkey) && (currindex <= currrec))
+			set();
+		if (currindex < currrec)
+			return linerec[currindex]->data;
 		else
 			throw "key is not found";
 	}

@@ -14,7 +14,7 @@ public:
 	HashTab(const HashTab<val>& t);
 	~HashTab() { delete[] flag; }
 	void insert(const string& tempkey, const val& tempdata) override;
-	val& search(const string& tepmkey) const override;
+	val& search(const string& tepmkey) override;
 	void del(const string& k) override;
 	void set() override;
 	val& getcurr() const override;
@@ -44,7 +44,8 @@ int HashTab<val>::HashFunc(const string& key) const
 template<typename val>
 void HashTab<val>::Realloc()
 {
-	int newmax = maxrec * 2;
+	int cof = 2;
+	int newmax = maxrec * cof;
 	TabRec<val>** k = new TabRec<val>*[newmax];
 	int* tempflag = new int[newmax];
 	for (int i = 0; i < maxrec; i++)
@@ -90,22 +91,21 @@ void HashTab<val>::reset()
 }
 
 template<typename val>
-val& HashTab<val>::search(const string& tempkey) const
+val& HashTab<val>::search(const string& tempkey) 
 {
-	HashTab<val> temp(*this);
-	temp.reset();
-	if (temp.currrec)
+	reset();
+	if (currrec)
 	{
-		temp.currindex = temp.HashFunc(tempkey);
-		int ind = temp.currindex;
-		if (temp.linerec[temp.currindex]->key == tempkey)
-			return temp.linerec[temp.currindex]->data;
+		currindex = HashFunc(tempkey);
+		int ind = currindex;
+		if (linerec[currindex]->key == tempkey)
+			return linerec[currindex]->data;
 		else
 		{
-			while (temp.flag[temp.currindex] && ((temp.currindex + 1) != ind) && (temp.linerec[temp.currindex]->key != tempkey))
-				temp.currindex = (temp.currindex + 1) % temp.maxrec;
-			if (temp.linerec[temp.currindex]->key == tempkey)
-				return temp.linerec[temp.currindex]->data;
+			while (flag[currindex] && ((currindex + 1) != ind) && (linerec[currindex]->key != tempkey))
+				currindex = (currindex + 1) % maxrec;
+			if (linerec[currindex]->key == tempkey)
+				return linerec[currindex]->data;
 			else
 				throw "key is not found";
 		}
