@@ -1,7 +1,0 @@
-﻿  test_polinom.cpp
-c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\test\test_polinom.cpp(1): fatal error C1083: Не удается открыть файл включение: polinom.h: No such file or directory
-  test_main.cpp
-c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\test\test_main.cpp(1): fatal error C1083: Не удается открыть файл включение: gtest.h: No such file or directory
-  test_list.cpp
-c:\users\владик\downloads\vladtemp\mp2-practice\jirnowvg\lab2\test\test_list.cpp(1): fatal error C1083: Не удается открыть файл включение: node.h: No such file or directory
-  Создание кода...
